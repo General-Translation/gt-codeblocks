@@ -37,23 +37,11 @@ function Text(props) {
   );
 }
 
-function CopyContainer(props) {
+function CopyContainer({ lang = '', highlight = true, copyText = 'Copy', copiedText = 'Copied!', children }) {
   var [copyToggle, setCopyToggle] = useState(false)
 
-  function handleChangeType(event) {
-    setType(event.target.value);
-  }
-
-  function handleChangeOs(event) {
-    setOs(event.target.value);
-  }
-
-  var handleChangeLang = (event) => {
-    setLang(event.target.value);
-  };
-
   function copyCode() {
-    navigator.clipboard.writeText(props.children)
+    navigator.clipboard.writeText(children)
     setCopyToggle(true);
     setTimeout(() => {
       setCopyToggle(false);
@@ -64,20 +52,20 @@ function CopyContainer(props) {
     <>
       <div className='rounded-b'>
         <div className='top-bar flex justify-between bg-[#343541]  rounded-t-md h-[40px] px-[16px]'>
-          <div className='flex items-center justify-center text-[#D9D9E3]'><p className='text-lang'>{props.lang}</p>
+          <div className='flex items-center justify-center text-[#D9D9E3]'><p className='text-lang'>{lang}</p>
           </div>
           <div className='text-copy flex items-center hover:cursor-pointer gap-[5px] text-[12px]' onClick={copyCode}>
             {copyToggle ?
 
               <>
                 {check}
-                <div className=' flex items-center justify-center text-[#D9D9E3]'><p className='text-copy'>{props.copiedText}</p>
+                <div className=' flex items-center justify-center text-[#D9D9E3]'><p className='text-copy'>{copiedText}</p>
                 </div>
               </>
               :
               <>
                 {clipboard}
-                <div className='copy-text flex items-center justify-center text-[#D9D9E3]'><p className='text-copy'>{props.copyText}</p>
+                <div className='copy-text flex items-center justify-center text-[#D9D9E3]'><p className='text-copy'>{copyText}</p>
                 </div>
               </>
             }
@@ -85,14 +73,13 @@ function CopyContainer(props) {
 
         </div>
         <div className='rounded-b-md overflow-hidden'>
-          <Text lang={props.lang} highlight={props.highlight}>
-            {props.children}
+          <Text lang={lang} highlight={highlight}>
+            {children}
           </Text>
         </div>
       </div>
     </>
   );
 }
-CopyContainer.defaultProps = { lang: '', highlight: true, copyText: 'Copy Code', copiedText: 'Copied!' }
 
 export default CopyContainer;

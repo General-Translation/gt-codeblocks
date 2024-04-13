@@ -4,9 +4,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build-css": "postcss src/App.scss -o src/postcss_output.css",
-    "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "babel": "rm -rf src/dist && NODE_ENV=production babel src/predist --out-dir src/dist --copy-files",
+    "webpack": "npx webpack"
   },
   "main": "src/rollup_output.js",
   "peerDependencies": {
@@ -17,7 +17,7 @@
     "@babel/cli": "^7.22.5",
     "@babel/core": "^7.22.11",
     "@babel/preset-env": "^7.22.10",
-    "@babel/preset-react": "^7.22.5",
+    "@babel/preset-react": "^7.24.1",
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-commonjs": "^25.0.4",
     "@rollup/plugin-json": "^6.0.0",
