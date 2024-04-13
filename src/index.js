@@ -61,19 +61,16 @@ function Text(props) {
     className: "p-[12px] rounded-b-md inner"
   }, props.children)));
 }
-function CopyContainer(props) {
+function CopyContainer({
+    lang = '',
+    highlight = true,
+    copyText = 'Copy',
+    copiedText = 'Copied!',
+    children
+  }) {
   var [copyToggle, setCopyToggle] = (0, _react.useState)(false);
-  function handleChangeType(event) {
-    setType(event.target.value);
-  }
-  function handleChangeOs(event) {
-    setOs(event.target.value);
-  }
-  var handleChangeLang = event => {
-    setLang(event.target.value);
-  };
   function copyCode() {
-    navigator.clipboard.writeText(props.children);
+    navigator.clipboard.writeText(children);
     setCopyToggle(true);
     setTimeout(() => {
       setCopyToggle(false);
@@ -87,29 +84,23 @@ function CopyContainer(props) {
     className: "flex items-center justify-center text-[#D9D9E3]"
   }, /*#__PURE__*/_react.default.createElement("p", {
     className: "text-lang"
-  }, props.lang)), /*#__PURE__*/_react.default.createElement("div", {
+  }, lang)), /*#__PURE__*/_react.default.createElement("div", {
     className: "text-copy flex items-center hover:cursor-pointer gap-[5px] text-[12px]",
     onClick: copyCode
   }, copyToggle ? /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, check, /*#__PURE__*/_react.default.createElement("div", {
     className: " flex items-center justify-center text-[#D9D9E3]"
   }, /*#__PURE__*/_react.default.createElement("p", {
     className: "text-copy"
-  }, props.copiedText))) : /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, clipboard, /*#__PURE__*/_react.default.createElement("div", {
+  }, copiedText))) : /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, clipboard, /*#__PURE__*/_react.default.createElement("div", {
     className: "copy-text flex items-center justify-center text-[#D9D9E3]"
   }, /*#__PURE__*/_react.default.createElement("p", {
     className: "text-copy"
-  }, props.copyText))))), /*#__PURE__*/_react.default.createElement("div", {
+  }, copyText))))), /*#__PURE__*/_react.default.createElement("div", {
     className: "rounded-b-md overflow-hidden"
   }, /*#__PURE__*/_react.default.createElement(Text, {
-    lang: props.lang,
-    highlight: props.highlight
-  }, props.children))));
+    lang: lang,
+    highlight: highlight
+  }, children))));
 }
-CopyContainer.defaultProps = {
-  lang: '',
-  highlight: true,
-  copyText: 'Copy Code',
-  copiedText: 'Copied!'
-};
 var _default = CopyContainer;
 exports.default = _default;

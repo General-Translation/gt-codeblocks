@@ -1,6 +1,6 @@
 {
   "name": "gt-codeblocks",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -32,7 +32,7 @@
     "highlight.js": "^11.8.0",
     "postcss": "^8.4.21",
     "regenerator-runtime": "^0.13.9",
-    "rollup": "^3.28.1",
+    "rollup": "^3.29.4",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
     "style-loader": "^3.3.3",
