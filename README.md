@@ -1,17 +1,16 @@
+Forked from <a href='https://github.com/adam-zakaria/copy-container-react'>https://github.com/adam-zakaria/copy-container-react</a>. Thank you!
+
+Differences:
+<li>Fixed defaultProps warning</li>
+
 # Introduction
 Use this component to display code with syntax highlighting and a clipboard users can click to copy the code to their clipboard. The design is based on OpenAI's component in ChatGPT, and can be styled further.
 
 The component can also be used to display text without syntax highlighting.
 
-# How it looks
-![basic](https://github.com/adam-zakaria/try/blob/main/screenshots/smaller/basic.png?raw=true)
-![difftheme](https://github.com/adam-zakaria/try/blob/main/screenshots/smaller/different_theme.png?raw=true)
-![text](https://github.com/adam-zakaria/try/blob/main/screenshots/smaller/text.png?raw=true)
-
-
 # Usage
 ```javascript
-import { CopyContainer } from 'copy-container-react'
+import { CopyContainer } from 'gt-codeblocks'
 
 function App(){
   return(
@@ -37,7 +36,7 @@ Your text needs to be within braces (to embed JS in JSX) within grave accent mar
 
 All props can be omitted. Here's an example which uses all the props:
 ```javascript
-import { CopyContainer } from 'copy-container-react'
+import { CopyContainer } from 'gt-codeblocks'
 
 function App(){
   return(

@@ -1,6 +1,6 @@
 {
-  "name": "copy-container-react",
-  "version": "1.0.10",
+  "name": "gt-codeblocks",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
