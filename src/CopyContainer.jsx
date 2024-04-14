@@ -22,16 +22,14 @@ function Text(props) {
   useEffect(() => {
     if (props.highlight) {
       hljs.highlightElement(codeRef.current);
-      let result = hljs.highlightAuto(codeRef.current.textContent);
+      hljs.highlightAuto(codeRef.current.textContent);
     }
   }, []);
 
   return (
-    <pre className='text-body rounded-b-md'>
-      <code ref={codeRef} className={`rounded-b-md language-${props.lang}`}>
-        <div className='p-[12px] rounded-b-md inner'>
-          {props.children}
-        </div>
+    <pre className='text-body rounded-b-md' ignoreUnescapedHTML>
+      <code ref={codeRef} className={`rounded-b-md language-${props.lang} p-[12px] rounded-b-md inner`}>
+        {props.children}
       </code>
     </pre>
   );

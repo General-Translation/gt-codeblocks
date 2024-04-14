@@ -59874,10 +59874,8 @@ function Text(props) {
     className: "text-body rounded-b-md"
   }, /*#__PURE__*/React.createElement("code", {
     ref: codeRef,
-    className: "rounded-b-md language-".concat(props.lang)
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "p-[12px] rounded-b-md inner"
-  }, props.children)));
+    className: "rounded-b-md language-".concat(props.lang, " p-[12px] rounded-b-md inner")
+  }, props.children));
 }
 function CopyContainer(_ref) {
   var _ref$lang = _ref.lang,
