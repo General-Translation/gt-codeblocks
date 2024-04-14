@@ -21,7 +21,7 @@ function Text(props) {
 
   useEffect(() => {
     if (props.highlight) {
-      hljs.highlightBlock(codeRef.current);
+      hljs.highlightElement(codeRef.current);
       let result = hljs.highlightAuto(codeRef.current.textContent);
     }
   }, []);
