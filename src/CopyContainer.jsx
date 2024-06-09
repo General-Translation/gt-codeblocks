@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 import React, { useEffect, useRef } from 'react';
 import hljs from 'highlight.js';
@@ -13,11 +15,11 @@ let clipboard =
     <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
   </svg>
 
-
-
-
 function Text(props) {
+
   var codeRef = useRef();
+
+  hljs.configure({ignoreUnescapedHTML: true})
 
   useEffect(() => {
     if (props.highlight) {
@@ -27,7 +29,7 @@ function Text(props) {
   }, []);
 
   return (
-    <pre className='text-body rounded-b-md' ignoreUnescapedHTML>
+    <pre className='text-body rounded-b-md'>
       <code ref={codeRef} className={`rounded-b-md language-${props.lang} p-[12px] rounded-b-md inner`}>
         {props.children}
       </code>
@@ -35,7 +37,7 @@ function Text(props) {
   );
 }
 
-function CopyContainer({ lang = '', highlight = true, copyText = 'Copy', copiedText = 'Copied!', children }) {
+function CopyContainer({ lang = '', highlight = true, copyText = '', copiedText = '', children }) {
   var [copyToggle, setCopyToggle] = useState(false)
 
   function copyCode() {

@@ -1,8 +1,10 @@
 Forked from <a href='https://github.com/adam-zakaria/copy-container-react'>https://github.com/adam-zakaria/copy-container-react</a>. Thank you!
 
-Differences:
+Changes:
 <li>Fixed defaultProps warning</li>
 <li>Fixed other build warnings</li>
+<li>Defaulted to no text for copying and acknowledgement</li>
+<li>Added a 'use client' to prevent errors</li>
 
 # Introduction
 Use this component to display code with syntax highlighting and a clipboard users can click to copy the code to their clipboard. The design is based on OpenAI's component in ChatGPT, and can be styled further.
