@@ -1,3 +1,3 @@
 import CopyContainer from '../CopyContainer'
 
-export { CopyContainer }
+export { CopyContainer as CodeBlock }

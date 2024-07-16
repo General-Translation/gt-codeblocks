@@ -37,7 +37,7 @@ function Text(props) {
   );
 }
 
-function CopyContainer({ lang = '', highlight = true, copyText = '', copiedText = '', children }) {
+function CopyContainer({ lang = '', highlight = true, copyText = '', copiedText = '', displayedLang, children }) {
   var [copyToggle, setCopyToggle] = useState(false)
 
   function copyCode() {
@@ -52,7 +52,7 @@ function CopyContainer({ lang = '', highlight = true, copyText = '', copiedText 
     <>
       <div className='rounded-b'>
         <div className='top-bar flex justify-between bg-[#343541]  rounded-t-md h-[40px] px-[16px]'>
-          <div className='flex items-center justify-center text-[#D9D9E3]'><p className='text-lang'>{lang}</p>
+          <div className='flex items-center justify-center text-[#D9D9E3]'><p className='text-lang'>{displayedLang || lang}</p>
           </div>
           <div className='text-copy flex items-center hover:cursor-pointer gap-[5px] text-[12px]' onClick={copyCode}>
             {copyToggle ?

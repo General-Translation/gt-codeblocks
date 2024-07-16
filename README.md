@@ -5,6 +5,8 @@ Changes:
 <li>Fixed other build warnings</li>
 <li>Defaulted to no text for copying and acknowledgement</li>
 <li>Added a 'use client' to prevent errors</li>
+<li>Added a displayedLang prop to CopyContainer</li>
+<li>Exported CopyContainer as CodeBlock</li>
 
 # Introduction
 Use this component to display code with syntax highlighting and a clipboard users can click to copy the code to their clipboard. The design is based on OpenAI's component in ChatGPT, and can be styled further.
@@ -67,6 +69,7 @@ crawl('http://www.blogsite.com')
 | Name  | Type  | Default | Required | Description |
 |-------|-------|---------|----------|-------------|
 | `lang` | String |  `''` | No  | Display the a string in the top left corner and pass the language to highlight.js so it doesn't need to guess. |
+| `displayedLang` | String |  `''` | No  | String displayed in the top left corner, overriding `lang`. |
 | `highlight` | Boolean |  `true`  | No | Enable syntax highlighting. |
 | `copyText` | String | `Copy Code` | No | Text beside the clipboard before it is clicked. |
 | `copiedText` | String | `Copied!` | No | Text beside the clipboard after it is clicked. |
