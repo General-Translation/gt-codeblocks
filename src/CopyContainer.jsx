@@ -15,9 +15,9 @@ let clipboard =
     <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
   </svg>
 
-function Text(props) {
+function Text({ setIsLoaded, ...props }) {
 
-  const [isLoaded, setIsLoaded] = useState(false)
+  
 
   var codeRef = useRef();
 
@@ -32,7 +32,7 @@ function Text(props) {
   }, []);
 
   return (
-    <pre className={`text-body rounded-b-md ${isLoaded ? '' : 'hidden'}`}>
+    <pre className={`text-body rounded-b-md`}>
       <code ref={codeRef} className={`rounded-b-md language-${props.lang} p-[12px] rounded-b-md inner`}>
         {props.children}
       </code>
@@ -41,6 +41,9 @@ function Text(props) {
 }
 
 function CopyContainer({ lang = '', highlight = true, copyText = '', copiedText = '', displayedLang, children }) {
+  
+  const [isLoaded, setIsLoaded] = useState(false)
+  
   var [copyToggle, setCopyToggle] = useState(false)
 
   function copyCode() {
@@ -53,7 +56,7 @@ function CopyContainer({ lang = '', highlight = true, copyText = '', copiedText 
 
   return (
     <>
-      <div className='rounded-b'>
+      <div className={`rounded-b ${isLoaded ? '' : 'hidden'}`}>
         <div className='top-bar flex justify-between bg-[#343541]  rounded-t-md h-[40px] px-[16px]'>
           <div className='flex items-center justify-center text-[#D9D9E3]'><p className='text-lang'>{displayedLang || lang}</p>
           </div>
@@ -76,7 +79,7 @@ function CopyContainer({ lang = '', highlight = true, copyText = '', copiedText 
 
         </div>
         <div className='rounded-b-md overflow-hidden'>
-          <Text lang={lang} highlight={highlight}>
+          <Text lang={lang} highlight={highlight} setIsLoaded={setIsLoaded}>
             {children}
           </Text>
         </div>
