@@ -15,9 +15,7 @@ let clipboard =
     <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
   </svg>
 
-function Text({ setIsLoaded, ...props }) {
-
-  
+function Text({ isLoaded, setIsLoaded, ...props }) {
 
   var codeRef = useRef();
 
@@ -33,16 +31,23 @@ function Text({ setIsLoaded, ...props }) {
 
   return (
     <pre className={`text-body rounded-b-md`}>
-      <code ref={codeRef} className={`rounded-b-md language-${props.lang} p-[12px] rounded-b-md inner`}>
-        {props.children}
+      <code ref={codeRef}  className={`rounded-b-md language-${props.lang} p-[12px] rounded-b-md inner`}>
+        <span style={{"display": isLoaded ? "inline-block" : "none"}}>{props.children}</span>
       </code>
     </pre>
   );
 }
 
 function CopyContainer({ lang = '', highlight = true, copyText = '', copiedText = '', displayedLang, children }) {
+
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [loadedClass, setLoadedClass] = useState('');
   
-  const [isLoaded, setIsLoaded] = useState(false)
+  useEffect(() => {
+    if (isLoaded) {
+      setLoadedClass('loaded');
+    }
+  }, [isLoaded]);
   
   var [copyToggle, setCopyToggle] = useState(false)
 
@@ -56,22 +61,22 @@ function CopyContainer({ lang = '', highlight = true, copyText = '', copiedText 
 
   return (
     <>
-      <div className={`rounded-b ${isLoaded ? '' : 'hidden'}`}>
+      <div style={{"display": isLoaded ? "block" : "none"}} className={`rounded-b fade-in ${loadedClass}`}>
         <div className='top-bar flex justify-between bg-[#343541]  rounded-t-md h-[40px] px-[16px]'>
-          <div className='flex items-center justify-center text-[#D9D9E3]'><p className='text-lang'>{displayedLang || lang}</p>
+          <div className='flex items-center justify-center text-[#D9D9E3]'>
+            <p style={{"display": isLoaded ? "inline-block" : "none"}} className='text-lang'>{displayedLang || lang}</p>
           </div>
           <div className='text-copy flex items-center hover:cursor-pointer gap-[5px] text-[12px]' onClick={copyCode}>
             {copyToggle ?
-
               <>
                 {check}
-                <div className=' flex items-center justify-center text-[#D9D9E3]'><p className='text-copy'>{copiedText}</p>
+                <div style={{"display": isLoaded ? "inline-block" : "none"}} className=' flex items-center justify-center text-[#D9D9E3]'><p className='text-copy'>{copiedText}</p>
                 </div>
               </>
               :
               <>
                 {clipboard}
-                <div className='copy-text flex items-center justify-center text-[#D9D9E3]'><p className='text-copy'>{copyText}</p>
+                <div style={{"display": isLoaded ? "inline-block" : "none"}} className='copy-text flex items-center justify-center text-[#D9D9E3]'><p className='text-copy'>{copyText}</p>
                 </div>
               </>
             }
@@ -79,7 +84,7 @@ function CopyContainer({ lang = '', highlight = true, copyText = '', copiedText 
 
         </div>
         <div className='rounded-b-md overflow-hidden'>
-          <Text lang={lang} highlight={highlight} setIsLoaded={setIsLoaded}>
+          <Text lang={lang} highlight={highlight} isLoaded={isLoaded} setIsLoaded={setIsLoaded}>
             {children}
           </Text>
         </div>
