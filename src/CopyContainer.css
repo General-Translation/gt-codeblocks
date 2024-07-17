@@ -12,23 +12,3 @@ select:hover {
 .hljs{
   padding:0px;
 }
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-2.5px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.fade-in {
-  opacity: 0;
-  transform: translateY(-2.5px);
-}
-
-.fade-in.loaded {
-  animation: fadeIn 0.5s forwards;
-}
