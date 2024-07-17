@@ -59863,6 +59863,10 @@ var clipboard = /*#__PURE__*/React.createElement("svg", {
   ry: "1"
 }));
 function Text(props) {
+  var _useState = React.useState(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    isLoaded = _useState2[0],
+    setIsLoaded = _useState2[1];
   var codeRef = React.useRef();
   HighlightJS.configure({
     ignoreUnescapedHTML: true
@@ -59871,10 +59875,11 @@ function Text(props) {
     if (props.highlight) {
       HighlightJS.highlightElement(codeRef.current);
       HighlightJS.highlightAuto(codeRef.current.textContent);
+      setIsLoaded(true);
     }
   }, []);
   return /*#__PURE__*/React.createElement("pre", {
-    className: "text-body rounded-b-md"
+    className: "text-body rounded-b-md ".concat(isLoaded ? '' : 'hidden')
   }, /*#__PURE__*/React.createElement("code", {
     ref: codeRef,
     className: "rounded-b-md language-".concat(props.lang, " p-[12px] rounded-b-md inner")
@@ -59891,10 +59896,10 @@ function CopyContainer(_ref) {
     copiedText = _ref$copiedText === void 0 ? '' : _ref$copiedText,
     displayedLang = _ref.displayedLang,
     children = _ref.children;
-  var _useState = React.useState(false),
-    _useState2 = _slicedToArray(_useState, 2),
-    copyToggle = _useState2[0],
-    setCopyToggle = _useState2[1];
+  var _useState3 = React.useState(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    copyToggle = _useState4[0],
+    setCopyToggle = _useState4[1];
   function copyCode() {
     navigator.clipboard.writeText(children);
     setCopyToggle(true);

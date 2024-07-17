@@ -17,6 +17,8 @@ let clipboard =
 
 function Text(props) {
 
+  const [isLoaded, setIsLoaded] = useState(false)
+
   var codeRef = useRef();
 
   hljs.configure({ignoreUnescapedHTML: true})
@@ -25,11 +27,12 @@ function Text(props) {
     if (props.highlight) {
       hljs.highlightElement(codeRef.current);
       hljs.highlightAuto(codeRef.current.textContent);
+      setIsLoaded(true);
     }
   }, []);
 
   return (
-    <pre className='text-body rounded-b-md'>
+    <pre className={`text-body rounded-b-md ${isLoaded ? '' : 'hidden'}`}>
       <code ref={codeRef} className={`rounded-b-md language-${props.lang} p-[12px] rounded-b-md inner`}>
         {props.children}
       </code>

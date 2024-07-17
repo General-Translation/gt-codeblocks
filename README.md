@@ -7,6 +7,7 @@ Changes:
 <li>Added a 'use client' to prevent errors</li>
 <li>Added a displayedLang prop to CopyContainer</li>
 <li>Exported CopyContainer as CodeBlock</li>
+<li>Made invisible while loading.</li>
 
 # Introduction
 Use this component to display code with syntax highlighting and a clipboard users can click to copy the code to their clipboard. The design is based on OpenAI's component in ChatGPT, and can be styled further.
