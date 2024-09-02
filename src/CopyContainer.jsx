@@ -1,5 +1,3 @@
-'use client'
-
 import { useState } from 'react'
 import React, { useEffect, useRef } from 'react';
 import hljs from 'highlight.js';
@@ -54,7 +52,7 @@ function CopyContainer({ lang = '', highlight = true, copyText = '', copiedText 
 
   return (
     <>
-      <div style={{"display": isLoaded ? "block" : "none"}} className={`rounded-b`}>
+      <div dir={'ltr'} style={{"display": isLoaded ? "block" : "none"}} className={`rounded-b`}>
         <div className='top-bar flex justify-between bg-[#343541]  rounded-t-md h-[40px] px-[16px]'>
           <div className='flex items-center justify-center text-[#D9D9E3]'>
             <p style={{"display": isLoaded ? "inline-block" : "none"}} className='text-lang'>{displayedLang || lang}</p>

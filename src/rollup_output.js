@@ -59943,6 +59943,7 @@ function CopyContainer(_ref2) {
     }, 2000);
   }
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    dir: 'ltr',
     style: {
       "display": isLoaded ? "block" : "none"
     },
